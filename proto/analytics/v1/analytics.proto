@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package analytics.v1;
+
+option go_package = "github.com/voidroute/protos/gen/analytics/v1";
+
+service AnalyticsService {
+  rpc GetAnalytics(GetAnalyticsRequest) returns (GetAnalyticsResponse);
+}
+
+message GetAnalyticsRequest {
+  string code = 1;
+}
+
+message CountryStats {
+  string country = 1;
+  uint64 clicks  = 2;
+}
+
+message GetAnalyticsResponse {
+  string code = 1;
+  uint64 total_clicks = 2;
+  string last_clicked_at = 3;
+  repeated CountryStats top_countries = 4;
+}
