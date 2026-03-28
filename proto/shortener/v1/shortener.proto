@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package shortener.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/voidroute/protos/gen/shortener/v1";
+
+service ShortenerService {
+  rpc CreateLink(CreateLinkRequest) returns (CreateLinkResponse);
+  rpc GetLink(GetLinkRequest) returns (GetLinkResponse);
+}
+
+message CreateLinkRequest {
+  string url = 1;
+  optional string alias = 2;
+  optional google.protobuf.Timestamp expires_at = 3;
+}
+
+message CreateLinkResponse {
+  string short_url = 1;
+}
+
+message GetLinkRequest {
+  string code = 1;
+}
+
+message GetLinkResponse {
+  string url = 1;
+}
