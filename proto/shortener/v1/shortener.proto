@@ -3,6 +3,7 @@ syntax = "proto3";
 package shortener.v1;
 
 import "google/protobuf/timestamp.proto";
+import "buf/validate/validate.proto";
 
 option go_package = "github.com/voidroute/protos/gen/shortener/v1";
 
@@ -12,8 +13,12 @@ service ShortenerService {
 }
 
 message CreateLinkRequest {
-  string url = 1;
-  optional string alias = 2;
+  string url = 1 [(buf.validate.field).string.uri = true];
+  optional string alias = 2 [(buf.validate.field).string = {
+    min_len: 3,
+    max_len: 16,
+    pattern: "^[a-zA-Z0-9-]+$"
+  }];
   optional google.protobuf.Timestamp expires_at = 3;
 }
 
