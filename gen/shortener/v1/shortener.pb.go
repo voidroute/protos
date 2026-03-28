@@ -7,6 +7,7 @@
 package v1
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
@@ -218,10 +219,10 @@ var File_shortener_v1_shortener_proto protoreflect.FileDescriptor
 
 const file_shortener_v1_shortener_proto_rawDesc = "" +
 	"\n" +
-	"\x1cshortener/v1/shortener.proto\x12\fshortener.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"\x99\x01\n" +
-	"\x11CreateLinkRequest\x12\x10\n" +
-	"\x03url\x18\x01 \x01(\tR\x03url\x12\x19\n" +
-	"\x05alias\x18\x02 \x01(\tH\x00R\x05alias\x88\x01\x01\x12>\n" +
+	"\x1cshortener/v1/shortener.proto\x12\fshortener.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1bbuf/validate/validate.proto\"\xbf\x01\n" +
+	"\x11CreateLinkRequest\x12\x1a\n" +
+	"\x03url\x18\x01 \x01(\tB\b\xbaH\x05r\x03\x88\x01\x01R\x03url\x125\n" +
+	"\x05alias\x18\x02 \x01(\tB\x1a\xbaH\x17r\x15\x10\x03\x18\x102\x0f^[a-zA-Z0-9-]+$H\x00R\x05alias\x88\x01\x01\x12>\n" +
 	"\n" +
 	"expires_at\x18\x03 \x01(\v2\x1a.google.protobuf.TimestampH\x01R\texpiresAt\x88\x01\x01B\b\n" +
 	"\x06_aliasB\r\n" +
